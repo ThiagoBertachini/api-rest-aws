@@ -33,4 +33,5 @@ build/
 .vscode/
 
 # virtual machine #
-/.metadata/
+.metadata/
+.gitignore

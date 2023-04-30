@@ -27,7 +27,7 @@ public class PersonController {
 	@GetMapping(value = "/{id}",
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Person> findById(
-			@PathVariable(value = "id") String id) throws Exception {
+			@PathVariable(value = "id") Long id) throws Exception {
 		return ResponseEntity.ok(personService.findById(id));
 	}
 	
@@ -43,12 +43,12 @@ public class PersonController {
 	
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Person> update(@RequestBody Person person,
-										@PathVariable(value = "id") String id) throws Exception {
+										@PathVariable(value = "id") Long id) throws Exception {
 		return ResponseEntity.ok(personService.update(person, id));
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable(value = "id") String id) throws Exception {
+	public ResponseEntity<Void> delete(@PathVariable(value = "id") Long		 id) throws Exception {
 		personService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
