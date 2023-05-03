@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bertachiniprojetos.data.Vo.V1.PersonVO;
+import com.bertachiniprojetos.data.Vo.V2.PersonVOV2;
 import com.bertachiniprojetos.exceptions.ResourceNotFoundException;
 import com.bertachiniprojetos.mappers.DozerMapper;
+import com.bertachiniprojetos.mappers.custom.PersonMapper;
 import com.bertachiniprojetos.model.Person;
 import com.bertachiniprojetos.repositories.PersonRepository;
 
@@ -19,6 +21,9 @@ public class PersonService {
 	
 	@Autowired
 	private PersonRepository personRepository;
+	
+	@Autowired
+	private PersonMapper personMapper;
 	
 	
 	public PersonVO findById(Long id) {
@@ -42,6 +47,15 @@ public class PersonService {
 		
 		return DozerMapper.parseObject(personRepository.save(
 						DozerMapper.parseObject(personVO, Person.class)), PersonVO.class);
+	}
+	
+	public PersonVOV2 createV2(PersonVOV2 personVOV2) {
+		
+		logger.info("Creating person V2");
+		
+		var personEntity = personMapper.parsePersonVOV2ToPersonEntity(personVOV2);
+		
+		return personMapper.parsePersonToPersonVOV2(personRepository.save(personEntity));
 	}
 
 	public PersonVO update(PersonVO personVO, Long id) {

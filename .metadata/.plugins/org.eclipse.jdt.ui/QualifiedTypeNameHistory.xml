@@ -12,8 +12,18 @@
     <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.exceptions.ResourceNotFoundException"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.repositories.PersonRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
+    <fullyQualifiedTypeName name="org.dozer.DozerBeanMapperBuilder"/>
+    <fullyQualifiedTypeName name="org.dozer.Mapper"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.github.dozermapper.core.Mapper"/>
+    <fullyQualifiedTypeName name="com.github.dozermapper.core.DozerBeanMapperBuilder"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.model.Person"/>
+    <fullyQualifiedTypeName name="com.bertachiniprojetos.mappers.DozerMapper"/>
+    <fullyQualifiedTypeName name="com.bertachiniprojetos.data.Vo.V1.PersonVO"/>
+    <fullyQualifiedTypeName name="org.modelmapper.ModelMapper"/>
 </qualifiedTypeNameHistroy>
