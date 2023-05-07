@@ -26,4 +26,7 @@
     <fullyQualifiedTypeName name="com.bertachiniprojetos.mappers.DozerMapper"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.data.Vo.V1.PersonVO"/>
     <fullyQualifiedTypeName name="org.modelmapper.ModelMapper"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonPropertyOrder"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonProperty"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnore"/>
 </qualifiedTypeNameHistroy>
