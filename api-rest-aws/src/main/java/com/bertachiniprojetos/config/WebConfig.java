@@ -13,15 +13,13 @@ import com.bertachiniprojetos.serialization.converter.YamlJacksonToHttpMessageCo
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+	private static final MediaType MEDIA_TYPE_APPLICATION_YAML = 
+			MediaType.valueOf("application/x-yaml");
+
 	@Override
 	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
 		converters.add(new YamlJacksonToHttpMessageConverter());
 	}
-
-	private static final MediaType MEDIA_TYPE_APPLICATION_YAML = 
-			MediaType.valueOf("application/x-yaml");
-	
-	
 
 	@Override
 	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
@@ -47,9 +45,4 @@ public class WebConfig implements WebMvcConfigurer {
 		.mediaType("x-yaml", MEDIA_TYPE_APPLICATION_YAML);
 
 	}
-	
-	
-	
-	
-
 }

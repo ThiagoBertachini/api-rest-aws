@@ -14,14 +14,12 @@
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.exceptions.ResourceNotFoundException"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.repositories.PersonRepository"/>
-    <fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
     <fullyQualifiedTypeName name="org.dozer.DozerBeanMapperBuilder"/>
     <fullyQualifiedTypeName name="org.dozer.Mapper"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.github.dozermapper.core.Mapper"/>
     <fullyQualifiedTypeName name="com.github.dozermapper.core.DozerBeanMapperBuilder"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.model.Person"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.mappers.DozerMapper"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.data.Vo.V1.PersonVO"/>
@@ -29,4 +27,13 @@
     <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonPropertyOrder"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonProperty"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnore"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+    <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.WebMvcConfigurer"/>
+    <fullyQualifiedTypeName name="org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.dataformat.yaml.YAMLMapper"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonInclude"/>
+    <fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
+    <fullyQualifiedTypeName name="com.bertachiniprojetos.utils.MediaType"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.bertachiniprojetos.serialization.converter.YamlJacksonToHttpMessageConverter"/>
 </qualifiedTypeNameHistroy>
