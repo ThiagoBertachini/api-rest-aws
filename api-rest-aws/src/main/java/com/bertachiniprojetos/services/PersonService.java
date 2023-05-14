@@ -1,6 +1,7 @@
 package com.bertachiniprojetos.services;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import com.bertachiniprojetos.controllers.PersonController;
 import com.bertachiniprojetos.data.Vo.V1.PersonVO;
 import com.bertachiniprojetos.data.Vo.V2.PersonVOV2;
+import com.bertachiniprojetos.exceptions.RequiredObjectIsNullException;
 import com.bertachiniprojetos.exceptions.ResourceNotFoundException;
 import com.bertachiniprojetos.mappers.DozerMapper;
 import com.bertachiniprojetos.mappers.custom.PersonMapper;
@@ -61,6 +63,8 @@ public class PersonService {
 	
 	public PersonVO create(PersonVO personVO) throws Exception {
 		
+		if(Objects.isNull(personVO)) throw new RequiredObjectIsNullException();
+		
 		logger.info("Creating person");
 		
 		personVO = DozerMapper.parseObject(personRepository.save(
@@ -73,6 +77,8 @@ public class PersonService {
 	
 	public PersonVOV2 createV2(PersonVOV2 personVOV2) {
 		
+		if(Objects.isNull(personVOV2)) throw new RequiredObjectIsNullException();
+
 		logger.info("Creating person V2");
 		
 		var personEntity = personMapper.parsePersonVOV2ToPersonEntity(personVOV2);
@@ -81,6 +87,8 @@ public class PersonService {
 	}
 
 	public PersonVO update(PersonVO personVO, Long id) throws Exception {
+		
+		if(Objects.isNull(personVO)) throw new RequiredObjectIsNullException();
 		
 		logger.info("Updating person");
 		
