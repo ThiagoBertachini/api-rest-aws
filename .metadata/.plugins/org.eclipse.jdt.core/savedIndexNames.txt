@@ -24,7 +24,6 @@ INDEX VERSION 1.132+A:\Projetos\rest-api-aws\.metadata\.plugins\org.eclipse.jdt.
 1019252939.index
 1254689388.index
 2010284925.index
-2348623198.index
 4149931267.index
 2145133285.index
 116356341.index
