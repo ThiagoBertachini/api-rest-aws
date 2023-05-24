@@ -15,7 +15,6 @@ import com.bertachiniprojetos.data.Vo.V1.BookVO;
 import com.bertachiniprojetos.exceptions.RequiredObjectIsNullException;
 import com.bertachiniprojetos.exceptions.ResourceNotFoundException;
 import com.bertachiniprojetos.mappers.DozerMapper;
-import com.bertachiniprojetos.mappers.custom.BookMapper;
 import com.bertachiniprojetos.model.Book;
 import com.bertachiniprojetos.repositories.BookRepository;
 

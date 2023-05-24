@@ -10,9 +10,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
-@Table(name = "book")
+@Table(name = "books")
 public class Book implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -24,7 +26,8 @@ public class Book implements Serializable{
 	@Column(name = "author", nullable = false, length = 80)
 	private String author;
 	
-	@Column(name = "launch_date", nullable = false, length = 20)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "launch_date", nullable = false)
 	private Date launchDate;
 	
 	@Column(nullable = false, length = 10)
