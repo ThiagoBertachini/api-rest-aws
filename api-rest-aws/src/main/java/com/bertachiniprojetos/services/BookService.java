@@ -24,8 +24,7 @@ public class BookService {
 	private Logger logger = Logger.getLogger(BookService.class.getName());
 	
 	@Autowired
-	private BookRepository bookRepository;
-	
+	BookRepository bookRepository;
 	
 	public BookVO findById(Long id) throws Exception {
 		logger.info("finding book");
