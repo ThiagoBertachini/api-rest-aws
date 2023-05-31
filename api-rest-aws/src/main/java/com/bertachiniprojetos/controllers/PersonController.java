@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +34,7 @@ public class PersonController {
 	@Autowired
 	private PersonService personService;
 
+	@CrossOrigin(origins = {"http://localhost:8080", "https://bertachiniprojetos.com"})
 	@Operation(
 			summary = "Request to return a Person by id", description = "Find by id", tags = {"Person"},
 			responses = {
@@ -74,6 +76,7 @@ public class PersonController {
 		return ResponseEntity.ok(personService.findAll());
 	}
 	
+	@CrossOrigin(origins = {"http://localhost:8080"})
 	@Operation(
 			summary = "Request to insert and return a new Person", description = "Creating a Person", tags = {"Person"},
 			responses = {

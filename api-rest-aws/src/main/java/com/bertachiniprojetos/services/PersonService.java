@@ -67,8 +67,10 @@ public class PersonService {
 		
 		logger.info("Creating person");
 		
-		personVO = DozerMapper.parseObject(personRepository.save(
-						DozerMapper.parseObject(personVO, Person.class)), PersonVO.class);
+		Person entity = personRepository.save(
+				DozerMapper.parseObject(personVO, Person.class));
+		
+		personVO = DozerMapper.parseObject(entity, PersonVO.class);
 		
 		personVO.add(linkTo(methodOn(PersonController.class).findById(personVO.getKey())).withSelfRel());
 		
