@@ -1,25 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="com.github.dozermapper.core.Mapper"/>
-    <fullyQualifiedTypeName name="com.github.dozermapper.core.DozerBeanMapperBuilder"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
-    <fullyQualifiedTypeName name="com.bertachiniprojetos.mappers.DozerMapper"/>
-    <fullyQualifiedTypeName name="org.modelmapper.ModelMapper"/>
-    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonPropertyOrder"/>
-    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnore"/>
-    <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.WebMvcConfigurer"/>
-    <fullyQualifiedTypeName name="org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter"/>
-    <fullyQualifiedTypeName name="com.fasterxml.jackson.dataformat.yaml.YAMLMapper"/>
-    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonInclude"/>
-    <fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
-    <fullyQualifiedTypeName name="com.bertachiniprojetos.utils.MediaType"/>
-    <fullyQualifiedTypeName name="com.bertachiniprojetos.serialization.converter.YamlJacksonToHttpMessageConverter"/>
     <fullyQualifiedTypeName name="org.springframework.hateoas.RepresentationModel"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonProperty"/>
     <fullyQualifiedTypeName name="com.github.dozermapper.core.Mapping"/>
     <fullyQualifiedTypeName name="org.springframework.hateoas.server.mvc.WebMvcLinkBuilder"/>
-    <fullyQualifiedTypeName name="com.bertachiniprojetos.controllers.PersonController"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.data.Vo.V2.PersonVOV2"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.TestInstance"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.extension.ExtendWith"/>
@@ -29,7 +13,6 @@
     <fullyQualifiedTypeName name="com.bertachiniprojetos.unitTests.mappers.mocks.MockPerson"/>
     <fullyQualifiedTypeName name="org.mockito.MockitoAnnotations"/>
     <fullyQualifiedTypeName name="org.mockito.Mock"/>
-    <fullyQualifiedTypeName name="com.bertachiniprojetos.model.Person"/>
     <fullyQualifiedTypeName name="org.assertj.core.api.Assertions"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
@@ -52,7 +35,6 @@
     <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.media.Content"/>
     <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.media.ArraySchema"/>
     <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.media.Schema"/>
-    <fullyQualifiedTypeName name="com.bertachiniprojetos.data.Vo.V1.PersonVO"/>
     <fullyQualifiedTypeName name="java.lang.Double"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.model.Book"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.data.Vo.V1.BookVO"/>
@@ -60,4 +42,22 @@
     <fullyQualifiedTypeName name="jakarta.persistence.Temporal"/>
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="com.bertachiniprojetos.integrationTests.vo.v1.security.TokenVO"/>
+    <fullyQualifiedTypeName name="com.bertachiniprojetos.configs.TestConfigs"/>
+    <fullyQualifiedTypeName name="jakarta.xml.bind.annotation.XmlElement"/>
+    <fullyQualifiedTypeName name="jakarta.xml.bind.annotation.XmlRootElement"/>
+    <fullyQualifiedTypeName name="com.bertachiniprojetos.integrationTests.vo.v1.security.AccountCredentialsVO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.PageRequest"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.Pageable"/>
+    <fullyQualifiedTypeName name="org.springdoc.core.converters.models.Pageable"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.Page"/>
+    <fullyQualifiedTypeName name="com.bertachiniprojetos.mappers.DozerMapper"/>
+    <fullyQualifiedTypeName name="com.bertachiniprojetos.model.Person"/>
+    <fullyQualifiedTypeName name="org.springframework.hateoas.PagedModel"/>
+    <fullyQualifiedTypeName name="org.springframework.hateoas.EntityModel"/>
+    <fullyQualifiedTypeName name="com.bertachiniprojetos.data.Vo.V1.PersonVO"/>
+    <fullyQualifiedTypeName name="org.springframework.data.web.PagedResourcesAssembler"/>
+    <fullyQualifiedTypeName name="com.bertachiniprojetos.controllers.PersonController"/>
+    <fullyQualifiedTypeName name="org.springframework.hateoas.Link"/>
 </qualifiedTypeNameHistroy>

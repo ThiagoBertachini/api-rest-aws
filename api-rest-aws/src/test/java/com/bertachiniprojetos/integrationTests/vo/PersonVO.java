@@ -6,6 +6,9 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dozermapper.core.Mapping;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class PersonVO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -18,6 +21,7 @@ public class PersonVO implements Serializable{
 	private String lastName;
 	private String address;
 	private String gender;
+	private Boolean enabled;
 	
 	public PersonVO() {
 	}
@@ -68,6 +72,14 @@ public class PersonVO implements Serializable{
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	@Override

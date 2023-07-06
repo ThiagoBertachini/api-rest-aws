@@ -25,16 +25,19 @@ public class PersonVO extends RepresentationModel<PersonVO>implements Serializab
 	private String lastName;
 	private String address;
 	private String gender;
+	private Boolean enabled;
 	
 	public PersonVO() {
 	}
 	
-	public PersonVO(Long key, String firstName, String lastName, String address, String gender) {
+	public PersonVO(Long key, String firstName, String lastName, 
+			String address, String gender, Boolean enabled) {
 		this.key = key;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.gender = gender;
+		this.enabled = enabled;
 	}
 
 	public Long getKey() {
@@ -76,6 +79,14 @@ public class PersonVO extends RepresentationModel<PersonVO>implements Serializab
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
 
 	@Override
 	public int hashCode() {
@@ -96,4 +107,5 @@ public class PersonVO extends RepresentationModel<PersonVO>implements Serializab
 		PersonVO other = (PersonVO) obj;
 		return Objects.equals(key, other.key);
 	}
+
 }

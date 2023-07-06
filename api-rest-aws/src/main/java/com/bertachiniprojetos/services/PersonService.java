@@ -1,13 +1,19 @@
 package com.bertachiniprojetos.services;
 
-import java.util.List;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.Objects;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Service;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import com.bertachiniprojetos.controllers.PersonController;
 import com.bertachiniprojetos.data.Vo.V1.PersonVO;
@@ -18,6 +24,8 @@ import com.bertachiniprojetos.mappers.DozerMapper;
 import com.bertachiniprojetos.mappers.custom.PersonMapper;
 import com.bertachiniprojetos.model.Person;
 import com.bertachiniprojetos.repositories.PersonRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class PersonService {
@@ -30,6 +38,8 @@ public class PersonService {
 	@Autowired
 	private PersonMapper personMapper;
 	
+	@Autowired
+	private PagedResourcesAssembler<PersonVO> assembler;
 	
 	public PersonVO findById(Long id) throws Exception {
 		logger.info("finding person");
@@ -44,21 +54,33 @@ public class PersonService {
 		return personVO;
 	}
 
-	public List<PersonVO> findAll() {
+	public PagedModel<EntityModel<PersonVO>> findAll(Pageable pageable) throws Exception {
 		logger.info("Listing person");
 
-		var personVO = DozerMapper.parseListObject(personRepository.findAll(), PersonVO.class);
+		var personPaged = personRepository.findAll(pageable);
 		
-		personVO.stream().forEach(p -> //
+		var personVoPaged = personPaged.map(personP -> DozerMapper.parseObject(personP, PersonVO.class));
+		
+		Link link;
+		personVoPaged.map(
+				personVOp ->
 				{
 					try {
-						p.add(linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel());
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				});
+								return personVOp.add(
+										linkTo(methodOn(PersonController.class).findById(personVOp.getKey())).withSelfRel());
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							return personVOp;
+						});
+						 
+							link = linkTo(methodOn(
+									PersonController.class).findAll(pageable.getPageNumber(), 
+																	pageable.getPageSize(), 
+																	"asc")).withSelfRel();
 				
-		return personVO;
+		return assembler.toModel(personVoPaged, link);
 	}
 	
 	public PersonVO create(PersonVO personVO) throws Exception {
@@ -109,6 +131,24 @@ public class PersonService {
 		return personVO;
 	}
 
+	/* Utilizado para métodos não gerenciado pelo próprio Spring DATA JPA
+       (DEVIDO A QUERY CRIADA COM MODIFICAÇÃO)*/ 
+	@Transactional 
+	public PersonVO disable(Long id) throws Exception {
+		logger.info("Disable person");
+		
+		personRepository.disablePerson(id);
+		
+		var personEntity = personRepository.findById(id).orElseThrow(
+				() -> new ResourceNotFoundException("NO FINDINGS FOR THIS ID"));
+	    
+		PersonVO personVO = DozerMapper.parseObject(personEntity, PersonVO.class);
+		
+		personVO.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel());
+		
+		return personVO;
+	}
+	
 	public void delete(Long id) {
 		
 		logger.info("Deleting person");

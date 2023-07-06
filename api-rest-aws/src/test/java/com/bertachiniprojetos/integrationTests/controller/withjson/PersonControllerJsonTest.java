@@ -14,6 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import com.bertachiniprojetos.configs.TestConfigs;
 import com.bertachiniprojetos.integrationTests.testContainers.AbstractIntegrationTest;
 import com.bertachiniprojetos.integrationTests.vo.PersonVO;
+import com.bertachiniprojetos.integrationTests.vo.v1.security.AccountCredentialsVO;
+import com.bertachiniprojetos.integrationTests.vo.v1.security.TokenVO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -44,20 +46,36 @@ public class PersonControllerJsonTest extends AbstractIntegrationTest {
 	}
 	
 	@Test
-	@Order(1)
-	public void createShouldCreateWithSuccess() throws JsonProcessingException {
-		mockPerson();
+	@Order(0)
+	public void authTest() throws JsonProcessingException {
+		AccountCredentialsVO credentialsVO = new AccountCredentialsVO("leandro", "admin123");	
+		
+		var accessTokenVo = given()
+				.basePath("/auth/signin")
+				.port(TestConfigs.SERVER_PORT)
+				.contentType(TestConfigs.CONTENT_TYPE_JSON)
+				.body(credentialsVO)
+				.when().post().then().statusCode(200)
+		.extract().body().as(TokenVO.class).getAccessToken();
 		
 		specification = new RequestSpecBuilder()
-				.addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_VALID)
+				.addHeader(TestConfigs.HEADER_PARAM_AUTHORIZATION, "Bearer " + accessTokenVo)
 				.setBasePath("/api/person/v1")
 				.setPort(TestConfigs.SERVER_PORT)
 				.addFilter(new RequestLoggingFilter(LogDetail.ALL))
 				.addFilter(new ResponseLoggingFilter(LogDetail.ALL))
 				.build();
 		
+	}
+	
+	@Test
+	@Order(1)
+	public void createShouldCreateWithSuccess() throws JsonProcessingException {
+		mockPerson();
+		
 		var content = given().spec(specification)
 				.contentType(TestConfigs.CONTENT_TYPE_JSON)
+				.header(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_VALID)
 				.body(personVO)
 				.when().post().then().statusCode(200)
 		.extract().body().asString();
@@ -77,16 +95,9 @@ public class PersonControllerJsonTest extends AbstractIntegrationTest {
 	public void createShouldFailWithInvalidOrigin() throws JsonProcessingException {
 		mockPerson();
 		
-		specification = new RequestSpecBuilder()
-				.addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_INVALID)
-				.setBasePath("/api/person/v1")
-				.setPort(TestConfigs.SERVER_PORT)
-				.addFilter(new RequestLoggingFilter(LogDetail.ALL))
-				.addFilter(new ResponseLoggingFilter(LogDetail.ALL))
-				.build();
-		
 		var content = given().spec(specification)
 				.contentType(TestConfigs.CONTENT_TYPE_JSON)
+				.header(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_INVALID)
 				.body(personVO)
 				.when().post().then().statusCode(403)
 				.extract().body().asString();
@@ -100,16 +111,9 @@ public class PersonControllerJsonTest extends AbstractIntegrationTest {
 	public void findByIdShouldReturnPerson() throws JsonProcessingException {
 		mockPerson();
 		
-		specification = new RequestSpecBuilder()
-				.addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_VALID)
-				.setBasePath("/api/person/v1")
-				.setPort(TestConfigs.SERVER_PORT)
-				.addFilter(new RequestLoggingFilter(LogDetail.ALL))
-				.addFilter(new ResponseLoggingFilter(LogDetail.ALL))
-				.build();
-		
 		var content = given().spec(specification)
 				.contentType(TestConfigs.CONTENT_TYPE_JSON)
+				.header(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_VALID)
 				.pathParam("id", validID)
 				.when().get("{id}").then().statusCode(200)
 				.extract().body().asString();
@@ -122,18 +126,11 @@ public class PersonControllerJsonTest extends AbstractIntegrationTest {
 	public void findByIdShouldFailWithInvalidOrigin() throws JsonProcessingException {
 		mockPerson();
 		
-		specification = new RequestSpecBuilder()
-				.addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_INVALID)
-				.setBasePath("/api/person/v1")
-				.setPort(TestConfigs.SERVER_PORT)
-				.addFilter(new RequestLoggingFilter(LogDetail.ALL))
-				.addFilter(new ResponseLoggingFilter(LogDetail.ALL))
-				.build();
-		
 		var content = given().spec(specification)
 				.contentType(TestConfigs.CONTENT_TYPE_JSON)
-				.body(personVO)
-				.when().post().then().statusCode(403)
+				.header(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_INVALID)
+				.pathParam("id", validID)
+				.when().get("{id}").then().statusCode(403)
 				.extract().body().asString();
 		
 		Assertions.assertNotNull(content);

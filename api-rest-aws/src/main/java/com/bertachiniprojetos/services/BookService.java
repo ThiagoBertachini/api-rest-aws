@@ -3,15 +3,23 @@ package com.bertachiniprojetos.services;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.logging.Logger;
 
+import org.hibernate.sql.results.graph.AssemblerCreationState;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Service;
 
 import com.bertachiniprojetos.controllers.BookController;
+import com.bertachiniprojetos.controllers.PersonController;
 import com.bertachiniprojetos.data.Vo.V1.BookVO;
+import com.bertachiniprojetos.data.Vo.V1.PersonVO;
 import com.bertachiniprojetos.exceptions.RequiredObjectIsNullException;
 import com.bertachiniprojetos.exceptions.ResourceNotFoundException;
 import com.bertachiniprojetos.mappers.DozerMapper;
@@ -26,6 +34,9 @@ public class BookService {
 	@Autowired
 	BookRepository bookRepository;
 	
+	@Autowired
+	private PagedResourcesAssembler<BookVO> assembler;
+	
 	public BookVO findById(Long id) throws Exception {
 		logger.info("finding book");
 		
@@ -39,21 +50,33 @@ public class BookService {
 		return bookVO;
 	}
 
-	public List<BookVO> findAll() {
-		logger.info("Listing book");
+	public PagedModel<EntityModel<BookVO>> findAll(Pageable pageable) throws Exception {
+		logger.info("Listing books");
 
-		var bookVO = DozerMapper.parseListObject(bookRepository.findAll(), BookVO.class);
+		var bookPaged = bookRepository.findAll(pageable);
 		
-		bookVO.stream().forEach(p -> //
+		var bookVoPaged = bookPaged.map(book -> DozerMapper.parseObject(book, BookVO.class));
+		
+		Link link;
+		bookVoPaged.map(
+				bookVoP ->
 				{
 					try {
-						p.add(linkTo(methodOn(BookController.class).findById(p.getKey())).withSelfRel());
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				});
+								return bookVoP.add(
+										linkTo(methodOn(BookController.class).findById(bookVoP.getKey())).withSelfRel());
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							return bookVoP;
+						});
+						 
+							link = linkTo(methodOn(
+									BookController.class).findAll(pageable.getPageNumber(), 
+																	pageable.getPageSize(), 
+																	"asc")).withSelfRel();
 				
-		return bookVO;
+		return assembler.toModel(bookVoPaged, link);
 	}
 	
 	public BookVO create(BookVO bookVO) throws Exception {
