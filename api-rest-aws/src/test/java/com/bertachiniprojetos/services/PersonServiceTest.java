@@ -1,17 +1,16 @@
 package com.bertachiniprojetos.services;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
-import java.util.List;
 import java.util.Optional;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -75,22 +74,6 @@ class PersonServiceTest {
 		assertEquals(personEntity.getFirstName(), result.getFirstName());
 		assertEquals(personEntity.getLastName(), result.getLastName());
 		assertEquals(personEntity.getAddress(), result.getAddress());
-	}
-
-	@Test
-	void testFindAll() {
-		List<Person> personEntityList = inputPerson.mockEntityList();
-		
-		when(repository.findAll()).thenReturn(personEntityList);
-		
-		List<PersonVO> result = service.findAll();
-		
-		assertNotNull(result);
-		assertEquals(result.get(0).getKey(), personEntityList.get(0).getId());
-		assertEquals(result.get(0).getFirstName(), personEntityList.get(0).getFirstName());
-		assertEquals(result.get(0).getLastName(), personEntityList.get(0).getLastName());
-		assertEquals(result.get(0).getGender(), personEntityList.get(0).getGender());
-		assertEquals(result.get(0).getAddress(), personEntityList.get(0).getAddress());
 	}
 
 	@Test

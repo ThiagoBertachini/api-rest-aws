@@ -16,8 +16,10 @@ import com.bertachiniprojetos.integrationTests.testContainers.AbstractIntegratio
 import com.bertachiniprojetos.integrationTests.vo.PersonVO;
 import com.bertachiniprojetos.integrationTests.vo.v1.security.AccountCredentialsVO;
 import com.bertachiniprojetos.integrationTests.vo.v1.security.TokenVO;
+import com.bertachiniprojetos.integrationTests.vo.wrappers.WrapperPersonVO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.restassured.builder.RequestSpecBuilder;
@@ -136,12 +138,31 @@ public class PersonControllerJsonTest extends AbstractIntegrationTest {
 		Assertions.assertNotNull(content);
 		Assertions.assertEquals("Invalid CORS request",content);
 	}
+	
+	@Test
+	@Order(3)
+	public void findAllShouldReturnAllPerson() throws JsonMappingException, JsonProcessingException {
+		mockPerson();
+		
+		var content = given().spec(specification)
+				.contentType(TestConfigs.CONTENT_TYPE_JSON)
+				.when()
+				.get().then()
+				.statusCode(200)
+				.extract().body().asString();
+		
+		WrapperPersonVO wrapperPerson = mapper.readValue(content, WrapperPersonVO.class);
+		var people = wrapperPerson.getEmbedded().getPersons();
+		
+		Assertions.assertNotNull(people.stream().findFirst().get().getFirstName());
+	}
 
 	private void mockPerson() {
 		personVO.setFirstName("Mock first name");
 		personVO.setLastName("Mock last name");
 		personVO.setAddress("Mock Address");
 		personVO.setGender("Gender");
+		personVO.setEnabled(true);
 	}
 
 }

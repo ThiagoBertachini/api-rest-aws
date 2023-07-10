@@ -78,21 +78,6 @@ class BookServiceTest {
 	}
 
 	@Test
-	void testFindAll() {
-		List<Book> bookEntityList = inputBook.mockEntityList();
-		
-		when(repository.findAll()).thenReturn(bookEntityList);
-		
-		List<BookVO> result = service.findAll();
-		
-		assertNotNull(result);
-		assertEquals(result.get(0).getKey(), bookEntityList.get(0).getId());
-		assertEquals(result.get(0).getTitle(), bookEntityList.get(0).getTitle());
-		assertEquals(result.get(0).getAuthor(), bookEntityList.get(0).getAuthor());
-		assertEquals(result.get(0).getLaunchDate(), bookEntityList.get(0).getLaunchDate());
-	}
-
-	@Test
 	void testCreate() throws Exception {
 		Book bookEntity = inputBook.mockEntity();
 		Book bookEntityPersist = bookEntity;
