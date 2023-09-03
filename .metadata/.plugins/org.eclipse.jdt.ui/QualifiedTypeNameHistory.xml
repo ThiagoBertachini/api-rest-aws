@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.media.ArraySchema"/>
-    <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.media.Schema"/>
-    <fullyQualifiedTypeName name="java.lang.Double"/>
-    <fullyQualifiedTypeName name="com.bertachiniprojetos.model.Book"/>
-    <fullyQualifiedTypeName name="com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Temporal"/>
-    <fullyQualifiedTypeName name="java.time.LocalDate"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="com.bertachiniprojetos.integrationTests.vo.v1.security.TokenVO"/>
-    <fullyQualifiedTypeName name="com.bertachiniprojetos.configs.TestConfigs"/>
-    <fullyQualifiedTypeName name="jakarta.xml.bind.annotation.XmlElement"/>
     <fullyQualifiedTypeName name="jakarta.xml.bind.annotation.XmlRootElement"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.integrationTests.vo.v1.security.AccountCredentialsVO"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.mappers.DozerMapper"/>
@@ -32,8 +21,6 @@
     <fullyQualifiedTypeName name="com.bertachiniprojetos.data.Vo.V1.BookVO"/>
     <fullyQualifiedTypeName name="org.springframework.data.domain.Pageable"/>
     <fullyQualifiedTypeName name="org.springframework.data.domain.Page"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.integrationTests.vo.PersonVO"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonProperty"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.JsonMappingException"/>
@@ -48,16 +35,29 @@
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.config.FileStorageConfig"/>
     <fullyQualifiedTypeName name="java.nio.file.Paths"/>
-    <fullyQualifiedTypeName name="com.bertachiniprojetos.exceptions.FileStoreException"/>
     <fullyQualifiedTypeName name="java.nio.file.Files"/>
     <fullyQualifiedTypeName name="org.springframework.util.StringUtils"/>
     <fullyQualifiedTypeName name="java.nio.file.StandardCopyOption"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.services.FileStorageService"/>
     <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
-    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
     <fullyQualifiedTypeName name="org.springframework.boot.web.servlet.ServletComponentScan"/>
     <fullyQualifiedTypeName name="org.springframework.web.servlet.support.ServletUriComponentsBuilder"/>
     <fullyQualifiedTypeName name="com.bertachiniprojetos.data.Vo.V1.UploadFileResponseVO"/>
     <fullyQualifiedTypeName name="org.jboss.logging.Logger"/>
+    <fullyQualifiedTypeName name="io.swagger.v3.oas.models.media.ArraySchema"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.bertachiniprojetos.exceptions.MyFileNotFoundException"/>
+    <fullyQualifiedTypeName name="org.springframework.core.io.UrlResource"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="org.springframework.core.io.Resource"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+    <fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
+    <fullyQualifiedTypeName name="java.net.http.HttpHeaders"/>
+    <fullyQualifiedTypeName name="org.springframework.http.HttpHeaders"/>
+    <fullyQualifiedTypeName name="com.bertachiniprojetos.exceptions.FileStoreException"/>
 </qualifiedTypeNameHistroy>
