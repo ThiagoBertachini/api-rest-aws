@@ -3,7 +3,7 @@ server:
 cors: 
   originPatters: http://localhost:3000,http://localhost:8080,https://bertachiniprojetos.com
 file:
-  upload-dir: /Projetos/rest-api-aws-upload-Dir
+  upload-dir: /home/runner/work/api-rest-aws/rest-api-aws-upload-Dir
 security:
   jwt:
     token:
