@@ -36,6 +36,7 @@ jobs:
         cache: maven
         
     - name: Build Maven JAR
+      working-directory: ./api-rest-aws
       run: mvn -B package --file pom.xml
 
     - name: Build Docker Compose
